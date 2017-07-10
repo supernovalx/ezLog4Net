@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace ezLog4Net
 {
     public class ezLog
     {
-        [DllImport("kernel32.dll")]
-        public static extern bool AllocConsole();
+        private LogConsole console;
 
         private static ezLog instance;
         public static ezLog Instance
@@ -29,7 +30,8 @@ namespace ezLog4Net
 
         private ezLog()
         {
-            AllocConsole();
+            console = new LogConsole();
+            console.Show();
         }
 
         public void Debug(string mess)
@@ -54,13 +56,15 @@ namespace ezLog4Net
 
         private void Write(string mess, ELogLevel loglv)
         {
+            RichTextBox rtbLog = console.rtbLog;
+
             if (DateTimeLog)
             {
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.Write($"[{DateTime.Now.ToShortTimeString()}] - ");
+                rtbLog.SelectionColor = Color.Gray;
+                rtbLog.SelectedText=$"[{DateTime.Now.ToString("HH:mm:ss.fff")}] - ";
             }
-            Console.ForegroundColor = (ConsoleColor)loglv;
-            Console.WriteLine($"{loglv} - {mess}");
+            rtbLog.SelectionColor = Color.FromKnownColor((KnownColor)loglv);
+            rtbLog.SelectedText = $"{loglv} - {mess}\n";
         }
     }
 }
