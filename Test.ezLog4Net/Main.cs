@@ -32,21 +32,25 @@ namespace Test.ezLog4Net
         private void btnDebug_Click(object sender, EventArgs e)
         {
             logger.Debug(rtbLogMess.Text);
+            logger.Debug(rtbLogMess.Text,1,2,3);
         }
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
             logger.Info(rtbLogMess.Text);
+            logger.Info(rtbLogMess.Text, 1, 2, 3);
         }
 
         private void btnWarn_Click(object sender, EventArgs e)
         {
             logger.Warn(rtbLogMess.Text);
+            logger.Warn(rtbLogMess.Text, 1, 2, 3);
         }
 
         private void btnError_Click(object sender, EventArgs e)
         {
             logger.Error(rtbLogMess.Text);
+            logger.Error(rtbLogMess.Text, 1, 2, 3);
         }
     }
 }

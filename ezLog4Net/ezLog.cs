@@ -42,27 +42,28 @@ namespace ezLog4Net
             console.Show();
         }
 
-        public async void Debug(string mess)
+        public async void Debug(string mess,params object[] values)
         {
-            this.Write(mess, ELogLevel.DEBUG);
+            
+            this.Write(mess,values, ELogLevel.DEBUG);
         }
 
-        public async void Info(string mess)
+        public async void Info(string mess, params object[] values)
         {
-            this.Write(mess, ELogLevel.INFO);
+            this.Write(mess, values, ELogLevel.INFO);
         }
 
-        public async void Warn(string mess)
+        public async void Warn(string mess, params object[] values)
         {
-            this.Write(mess, ELogLevel.WARN);
+            this.Write(mess, values, ELogLevel.WARN);
         }
 
-        public async void Error(string mess)
+        public async void Error(string mess, params object[] values)
         {
-            this.Write(mess, ELogLevel.ERROR);
+            this.Write(mess, values, ELogLevel.ERROR);
         }
 
-        private void Write(string mess, ELogLevel loglv)
+        private void Write(string mess,object[] values, ELogLevel loglv)
         {
             console.rtbLog.Invoke(new MethodInvoker(delegate
             {
@@ -74,7 +75,11 @@ namespace ezLog4Net
 
                 // Write current thread id
                 if (ThreadLog)
-                    rtbLog.WriteTextWithColor($"[ThreadID = {Thread.CurrentThread.ManagedThreadId}]", Color.Pink);
+                    rtbLog.WriteTextWithColor($"[ThreadID = {Thread.CurrentThread.ManagedThreadId}] - ", Color.Aqua);
+
+                // Format mess
+                if (values.Length > 0)
+                    mess = string.Format(mess, values);
 
                 // Main log content
                 rtbLog.WriteTextWithColor($"{loglv} - {mess}\n", loglv);
