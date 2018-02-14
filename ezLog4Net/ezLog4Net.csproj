@@ -54,6 +54,7 @@
       <DependentUpon>LogConsole.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RichTextBoxControlExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="LogConsole.resx">

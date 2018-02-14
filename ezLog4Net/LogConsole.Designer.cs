@@ -42,7 +42,7 @@
             this.rtbLog.Name = "rtbLog";
             this.rtbLog.ReadOnly = true;
             this.rtbLog.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.rtbLog.Size = new System.Drawing.Size(603, 328);
+            this.rtbLog.Size = new System.Drawing.Size(844, 328);
             this.rtbLog.TabIndex = 0;
             this.rtbLog.Text = "";
             this.rtbLog.TextChanged += new System.EventHandler(this.rtbLog_TextChanged);
@@ -51,11 +51,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(603, 328);
+            this.ClientSize = new System.Drawing.Size(844, 328);
             this.Controls.Add(this.rtbLog);
             this.Name = "LogConsole";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LogConsole";
+            this.TopMost = true;
             this.ResumeLayout(false);
 
         }
